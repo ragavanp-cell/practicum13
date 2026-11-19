@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrainSphere | Corporate Training &amp; Workshops Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="trainsphere-workshop-task-manager.css">
+</head>
+<body>
+
+    <div class="app-shell">
+        <!-- Left Navigation Sidebar -->
+        <aside class="sidebar">
+            <div class="brand-box">
+                <strong>TRAINSPHERE</strong>
+                <span>Workshop Task Manager</span>
+            </div>
+            <ul class="nav-list">
+                <li><button class="nav-btn active" onclick="filterByStatus('All', this)">Board (All Statuses)</button></li>
+                <li><button class="nav-btn" onclick="filterByStatus('Pending', this)">1. Pending Workshops</button></li>
+                <li><button class="nav-btn" onclick="filterByStatus('In Progress', this)">2. In Progress</button></li>
+                <li><button class="nav-btn" onclick="filterByStatus('Completed', this)">3. Completed</button></li>
+            </ul>
+        </aside>
+
+        <!-- Main Board Workspace -->
+        <main class="workspace">
+            <div class="top-bar">
+                <h1>TrainSphere Corporate Training &amp; Workshops Board</h1>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search workshops &amp; tasks..." oninput="renderBoard()">
+            </div>
+
+            <!-- CREATE: Input Box & Add Button (onclick) -->
+            <div class="task-form-bar">
+                <input type="text" id="taskTitleInput" placeholder="Enter new training task (e.g., Prepare AI Bootcamp Deck)...">
+                <select id="taskDeptSelect">
+                    <option value="Leadership Labs">Leadership Labs</option>
+                    <option value="Tech Bootcamps">Tech Bootcamps</option>
+                    <option value="Agile Sprints">Agile Sprints</option>
+                    <option value="Soft Skills Mastery">Soft Skills Mastery</option>
+                </select>
+                <select id="taskStatusSelect">
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <button class="btn-add" onclick="createTask()">+ Add Task</button>
+            </div>
+
+            <!-- READ / UPDATE / DELETE: 3-Column Board -->
+            <div class="board-grid">
+                <div class="board-column" id="col-Pending">
+                    <div class="column-header">
+                        <h3>Pending</h3>
+                        <span class="count-pill" id="count-Pending">0</span>
+                    </div>
+                    <div id="list-Pending"></div>
+                </div>
+
+                <div class="board-column" id="col-In Progress">
+                    <div class="column-header">
+                        <h3>In Progress</h3>
+                        <span class="count-pill" id="count-In Progress">0</span>
+                    </div>
+                    <div id="list-In Progress"></div>
+                </div>
+
+                <div class="board-column" id="col-Completed">
+                    <div class="column-header">
+                        <h3>Completed</h3>
+                        <span class="count-pill" id="count-Completed">0</span>
+                    </div>
+                    <div id="list-Completed"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="trainsphere-workshop-task-manager.js"></script>
+
+</body>
+</html>
